@@ -38,7 +38,7 @@ public:
 
 	// Holds the river of actions.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fighting/Fighter")
-	TArray<FActionData> actionRiver;
+	TArray<UActionWidget*> actionRiver;
 
 	//How many actions should he in the river at any time?
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Fighting/Actions")
@@ -52,7 +52,7 @@ public:
 
 	// Adds the shouted action to the player.
 	UFUNCTION(BlueprintCallable, Category = "Fighting/Actions")
-	FActionData ShoutAction(FString shoutedAction);
+		UActionWidget* ShoutAction(FString shoutedAction);
 
 protected: 
 	virtual void PerformCurrentAction();

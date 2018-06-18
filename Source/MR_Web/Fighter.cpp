@@ -4,6 +4,7 @@
 #include "FightingGameState.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Engine/World.h"
+#include "ActionWidget.h"
 
 // Sets default values
 AFighter::AFighter()
@@ -67,7 +68,7 @@ void AFighter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-FActionData AFighter::ShoutAction(FString shoutedAction)
+UActionWidget* AFighter::ShoutAction(FString shoutedAction)
 {
 	return gameState->GetActionOfType(shoutedAction);
 }
@@ -75,9 +76,9 @@ FActionData AFighter::ShoutAction(FString shoutedAction)
 void AFighter::PerformCurrentAction()
 {
 	auto currentAction = actionRiver.Pop();
-	nextAttackTime = currentAction.duration;
+	nextAttackTime = currentAction->duration;
 
-	UE_LOG(LogTemp, Warning, TEXT("%s performed %s"), *this->GetName(), *currentAction.shoutedAction);
+	UE_LOG(LogTemp, Warning, TEXT("%s performed %s"), *this->GetName(), *currentAction->shoutedAction);
 
 	auto newAction = gameState->GetRandomAction();
 	actionRiver.Add(newAction);

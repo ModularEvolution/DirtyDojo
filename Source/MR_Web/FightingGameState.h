@@ -10,7 +10,7 @@
  * 
  */
 
-class UAction;
+class UActionWidget;
 
 UCLASS()
 class MR_WEB_API AFightingGameState : public AGameStateBase
@@ -20,11 +20,11 @@ class MR_WEB_API AFightingGameState : public AGameStateBase
 public:
 	/*All the possible actions*/
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Fighting/Actions")
-	TArray<FActionData> actions;
+  	TArray<UActionWidget*> actions;
 
-	FActionData GetRandomAction();
+	UActionWidget* GetRandomAction();
 
-	FActionData GetActionOfType(FString shoutedAction);
+	UActionWidget* GetActionOfType(FString shoutedAction);
 	 
 };
   

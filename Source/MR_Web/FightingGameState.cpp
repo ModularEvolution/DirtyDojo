@@ -1,18 +1,19 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "FightingGameState.h"
+#include "ActionWidget.h"
 
-FActionData AFightingGameState::GetRandomAction()
+UActionWidget* AFightingGameState::GetRandomAction()
 {
 	int32 randomIndex = FMath::FRandRange(0, actions.Num());
 	return actions[randomIndex];
 }
 
-FActionData AFightingGameState::GetActionOfType(FString shoutedAction)
+UActionWidget* AFightingGameState::GetActionOfType(FString shoutedAction)
 {
 	for (int32 i = 0; i < actions.Num(); i++)
 	{
-		if (actions[i].shoutedAction == shoutedAction)
+		if (actions[i]->shoutedAction == shoutedAction)
 			return actions[i];
 	}
 
